@@ -1,0 +1,115 @@
+ /*ENCABEZADO*/
+    .encabezado {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      background-color: #ffe6f0;
+    }
+    
+    /* Estilos del navbar */
+    .navbar {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Logo */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #b30059;
+    }
+    
+    /* Enlaces del menú */
+    .nav-link-custom {
+      color: purple !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link-custom:hover {
+      background-color: rgba(128, 0, 128, 0.1);
+      border-radius: 0.25rem;
+      transform: translateY(-2px);
+    }
+    
+    .nav-link-custom:active,
+    .nav-link-custom.active {
+      background-color: rgba(128, 0, 128, 0.2);
+    }
+    
+    /* Botón hamburguesa */
+    .navbar-toggler {
+      border: 2px solid purple;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.25rem rgba(128, 0, 128, 0.25);
+      outline: none;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(128, 0, 128, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      width: 1.5em;
+      height: 1.5em;
+    }
+    
+    /* Estilos responsivos para tablets y móviles */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        margin-top: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      
+      .nav-link-custom {
+        font-size: 15px;
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid rgba(128, 0, 128, 0.1);
+        display: block;
+        text-align: left;
+      }
+      
+      .nav-item:last-child .nav-link-custom {
+        border-bottom: none;
+      }
+      
+    }
+    
+    /* Estilos para móviles pequeños */
+    @media (max-width: 576px) {
+      .navbar {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .nav-link-custom {
+        font-size: 14px;
+        padding: 0.6rem 1rem;
+      }
+    }
+ 
+ /* Footer */
+    footer {
+      background: #ffe6f0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer .info {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
