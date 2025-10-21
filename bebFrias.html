@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bebidas Frías | Las Girls</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  
+<style>
+    /* Estilos base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        line-height: 1.4;
+        background-color: #f0f8ff; 
+    }
+
+    /* Estilos del navbar (sin cambios) */
+    .encabezado {
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        line-height: 1.4;
+        background-color: #e0f2f7; 
+    }
+    
+    .navbar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #007bff; 
+    }
+    
+    .nav-link-custom {
+        color: #007bff !important; 
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .nav-link-custom:hover {
+        background-color: rgba(0, 123, 255, 0.1); 
+        border-radius: 0.25rem;
+        transform: translateY(-2px);
+    }
+    
+    .nav-link-custom:active,
+    .nav-link-custom.active {
+        background-color: rgba(0, 123, 255, 0.2);
+    }
+    
+    .navbar-toggler {
+        border: 2px solid #007bff; 
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
+    
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%path stroke='rgba(0, 123, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        width: 1.5em;
+        height: 1.5em;
+    }
+    
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        margin-top: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      
+      .nav-link-custom {
+        font-size: 15px;
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+        display: block;
+        text-align: left;
+      }
+      
+      .nav-item:last-child .nav-link-custom {
+        border-bottom: none;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .nav-link-custom {
+        font-size: 14px;
+        padding: 0.6rem 1rem;
+      }
+    }
+
+    /* Estilos del contenido (Cards) */
+    .card-custom {
+        background-color: #e0f7fa; 
+        border: 1px solid #b3e5fc; 
+        border-radius: 0.75rem;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .card-custom:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
+    }
+
+    /*******************************************/
+    /* CAMBIO 2: AQUÍ ESTÁ LA CORRECCIÓN   */
+    /*******************************************/
+    .card-img-top-custom {
+        width: 100%;
+        height: 200px; /* Mantenemos altura fija para que las cards sean uniformes */
+        object-fit: contain; /* CAMBIADO: 'cover' por 'contain' para evitar recorte */
+        padding: 10px; /* Añadimos padding para que no toque los bordes */
+        border-top-left-radius: calc(0.75rem - 1px);
+        border-top-right-radius: calc(0.75rem - 1px);
+        background-color: #ffffff; /* Fondo blanco para las imágenes con transparencia */
+    }
+
+    .btn-prepare {
+        background-color: #007bff; 
+        border-color: #007bff;
+        color: white;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-prepare:hover {
+        background-color: #0056b3; 
+        border-color: #0056b3;
+        color: white;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #e0f2f7; 
+        padding: 40px 20px;
+        text-align: center;
+        margin-top: 50px; 
+    }
+
+    footer .info {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
+</style>
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-lg navbar-light border-bottom encabezado">
+    <div class="container">
+      <a class="navbar-brand" href="pagPrincipal.html">
+        <div class="logo">🥤 Bebidas Las Girls</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="pagPrincipal.html" class="nav-link nav-link-custom">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a href="pagSecciones.html" class="nav-link nav-link-custom">MENÚ</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="#contacto" class="nav-link nav-link-custom">CONTACTO</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+  
+<div class="container marketing" style="padding-top: 50px;">
+    <h1 class="text-center mb-5" style="color: #007bff;">Nuestras Bebidas Frías</h1>
+    <div class="d-flex flex-wrap justify-content-center gap-5">
+      
+      
+<div class="card card-custom shadow text-center mb-4" style="width: 18rem;">
+        <img src="imgsCafeteria/imagenesPagPOSTRES/chamoyada.png" class="card-img-top-custom" alt="Chamoyada">
+        <div class="card-body d-flex flex-column"> <h2 class="card-title fw-normal mt-3" style="color: #007bff;">CHAMOYADA</h2>
+          <p class="card-text">Una refrescante explosión de sabor agridulce con chamoy y fruta.</p>
+          <button type="button" class="btn btn-prepare mt-auto" data-bs-toggle="modal" data-bs-target="#chamoyadaModal"> Cómo preparar »
+          </button>
+        </div>
+      </div>
+
+      
+<div class="card card-custom shadow text-center mb-4" style="width: 18rem;">
+        <img src="imgsCafeteria/imagenesPagPOSTRES/capuchino.jpg" class="card-img-top-custom" alt="Capuchino Helado">
+        <div class="card-body d-flex flex-column">
+          <h2 class="card-title fw-normal mt-3" style="color: #007bff;">CAPUCHINO HELADO</h2>
+          <p class="card-text">La cremosidad de un capuchino, pero servido bien frío.</p>
+          <button type="button" class="btn btn-prepare mt-auto" data-bs-toggle="modal" data-bs-target="#capuchinoModal">
+            Cómo preparar »
+          </button>
+        </div>
+      </div>
+
+      
+<div class="card card-custom shadow text-center mb-4" style="width: 18rem;">
+        <img src="imgsCafeteria/imagenesPagPOSTRES/americano.png" class="card-img-top-custom" alt="Americano Helado">
+        <div class="card-body d-flex flex-column">
+          <h2 class="card-title fw-normal mt-3" style="color: #007bff;">AMERICANO HELADO</h2>
+          <p class="card-text">Un clásico americano, pero con el toque refrescante del hielo.</p>
+          <button type="button" class="btn btn-prepare mt-auto" data-bs-toggle="modal" data-bs-target="#americanoModal">
+            Cómo preparar »
+          </button>
+        </div>
+      </div>
+
+      
+<div class="card card-custom shadow text-center mb-4" style="width: 18rem;">
+        <img src="imgsCafeteria/imagenesPagPOSTRES/frappe.png" class="card-img-top-custom" alt="Frappé">
+        <div class="card-body d-flex flex-column">
+          <h2 class="card-title fw-normal mt-3" style="color: #007bff;">FRAPPÉ</h2>
+          <p class="card-text">La bebida fría perfecta, con base de café y textura granizada.</p>
+          <button type="button" class="btn btn-prepare mt-auto" data-bs-toggle="modal" data-bs-target="#frappeModal">
+            Cómo preparar »
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+<footer id="contacto">
+    <div class="container info">
+      <p>&copy; 2025 Postres Las Girls | Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  
+<div class="modal fade" id="chamoyadaModal" tabindex="-1" aria-labelledby="chamoyadaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"> <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="chamoyadaModalLabel" style="color: #007bff;">Cómo preparar una Chamoyada</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredientes:</h6>
+          <ul>
+            <li>1 taza de hielo</li>
+            <li>1/2 taza de mango (fresco o congelado)</li>
+            <li>1/4 taza de jugo de limón</li>
+            <li>2-3 cucharadas de chamoy</li>
+            <li>1 cucharada de Tajín (o similar)</li>
+            <li>Fruta fresca para decorar (mango, piña)</li>
+          </ul>
+          <h6>Preparación:</h6>
+          <ol>
+            <li>En un vaso, escarcha el borde con chamoy y luego con Tajín.</li>
+            <li>Licúa el hielo, el mango, el jugo de limón y 1 cucharada de chamoy hasta obtener una consistencia de frappé.</li>
+            <li>Vierte la mezcla en el vaso preparado.</li>
+            <li>Añade más chamoy y Tajín al gusto.</li>
+            <li>Decora con trozos de fruta fresca.</li>
+            <li>¡Disfruta tu refrescante chamoyada!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="modal fade" id="capuchinoModal" tabindex="-1" aria-labelledby="capuchinoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"> <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="capuchinoModalLabel" style="color: #007bff;">Cómo preparar un Capuchino Helado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredientes:</h6>
+          <ul>
+            <li>1 taza de hielo</li>
+            <li>1/2 taza de leche (entera, deslactosada, almendra)</li>
+            <li>1 shot de espresso (o 1/4 taza de café fuerte)</li>
+            <li>1-2 cucharadas de azúcar o endulzante (opcional)</li>
+            <li>Crema batida (para decorar, opcional)</li>
+            <li>Cacao en polvo o canela (para decorar, opcional)</li>
+          </ul>
+          <h6>Preparación:</h6>
+          <ol>
+            <li>Combina el hielo, la leche, el espresso y el azúcar (si usas) en una licuadora.</li>
+            <li>Licúa hasta que la mezcla esté suave y espumosa.</li>
+            <li>Vierte en un vaso.</li>
+            <li>Decora con crema batida, cacao en polvo o canela si lo deseas.</li>
+            <li>¡Listo para refrescarte!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="modal fade" id="americanoModal" tabindex="-1" aria-labelledby="americanoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"> <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="americanoModalLabel" style="color: #007bff;">Cómo preparar un Americano Helado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredientes:</h6>
+          <ul>
+            <li>1 shot de espresso (o 1/4 taza de café fuerte)</li>
+            <li>1 taza de hielo</li>
+            <li>Agua fría</li>
+            <li>Azúcar o endulzante (opcional)</li>
+          </ul>
+          <h6>Preparación:</h6>
+          <ol>
+            <li>Prepara tu shot de espresso o café fuerte.</li>
+            <li>Llena un vaso con hielo.</li>
+            <li>Vierte el espresso sobre el hielo.</li>
+            <li>Rellena el resto del vaso con agua fría.</li>
+            <li>Añade azúcar o endulzante si lo prefieres y mezcla suavemente.</li>
+            <li>¡Un americano clásico, ahora bien frío!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="modal fade" id="frappeModal" tabindex="-1" aria-labelledby="frappeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"> <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="frappeModalLabel" style="color: #007bff;">Cómo preparar un Frappé de Café</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredientes:</h6>
+          <ul>
+            <li>1 taza de hielo</li>
+            <li>1/2 taza de café frío concentrado (o 2 shots de espresso)</li>
+            <li>1/4 taza de leche (o crema)</li>
+            <li>2 cucharadas de azúcar o jarabe simple</li>
+            <li>Salsa de chocolate o caramelo (opcional, para el vaso)</li>
+            <li>Crema batida (para decorar, opcional)</li>
+          </ul>
+          <h6>Preparación:</h6>
+          <ol>
+            <li>Si usas salsa, decora el interior del vaso antes de empezar.</li>
+            <li>Combina el hielo, el café frío, la leche y el azúcar en una licuadora.</li>
+            <li>Licúa a alta velocidad hasta obtener una consistencia suave y granizada.</li>
+            <li>Vierte la mezcla en el vaso preparado.</li>
+            <li>Decora con crema batida y más salsa si lo deseas.</li>
+            <li>¡Tu frappé está listo para disfrutar!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
