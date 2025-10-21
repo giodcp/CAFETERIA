@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetario de Postres Dulces</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fffafc;
+      color: #444;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      color: white;
+      padding: 30px 10px;
+      border-bottom: 3px solid #ffa6c9;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 30px;
+    }
+
+    .postre {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+
+    .postre:hover {
+      transform: scale(1.03);
+    }
+
+    .postre img {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .ver-receta {
+      background-color: #ff6b81;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .ver-receta:hover {
+      background-color: #ff8787;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .modal-contenido {
+      background-color: white;
+      border-radius: 20px;
+      padding: 25px;
+      width: 90%;
+      max-width: 600px;
+      text-align: left;
+      position: relative;
+    }
+
+    #cerrar {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 28px;
+      color: #ff6b81;
+      cursor: pointer;
+    }
+
+    #cerrar:hover {
+      color: #ff0000;
+    }
+
+    #imagen-receta {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* Animación */
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animar {
+      animation: aparecer 0.4s ease;
+    }
+
+    h3 {
+      color: #ff6b81;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍨 Postres Dulces</h1>
+    <p>Descubre las recetas más deliciosas para endulzar tu día 💕</p>
+  </header>
+
+  <main class="galeria">
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Pastel de Chocolate">
+      <h2>Pastel de Chocolate</h2>
+      <button class="ver-receta" data-receta="pastel-chocolate">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Cupcake de Fresa">
+      <h2>Cupcake de Fresa</h2>
+      <button class="ver-receta" data-receta="cupcake-fresa">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Tarta de Frutas">
+      <h2>Tarta de Frutas</h2>
+      <button class="ver-receta" data-receta="tarta-frutas">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Mousse de Frambuesa">
+      <h2>Mousse de Frambuesa</h2>
+      <button class="ver-receta" data-receta="mousse-frambuesa">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Cheesecake de Vainilla">
+      <h2>Cheesecake de Vainilla</h2>
+      <button class="ver-receta" data-receta="cheesecake-vainilla">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Brownies">
+      <h2>Brownies</h2>
+      <button class="ver-receta" data-receta="brownies">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Galletas con Chispas">
+      <h2>Galletas con Chispas</h2>
+      <button class="ver-receta" data-receta="galletas-chispas">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Flan Napolitano">
+      <h2>Flan Napolitano</h2>
+      <button class="ver-receta" data-receta="flan-napolitano">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Donas Glaseadas">
+      <h2>Donas Glaseadas</h2>
+      <button class="ver-receta" data-receta="donas-glaseadas">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/imagen.jpg" alt="Helado de Mango">
+      <h2>Helado de Mango</h2>
+      <button class="ver-receta" data-receta="helado-mango">Ver receta</button>
+    </article>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-contenido animar">
+      <span id="cerrar">&times;</span>
+      <h2 id="titulo-receta"></h2>
+      <img id="imagen-receta" src="" alt="Imagen del postre">
+      <h3>Ingredientes:</h3>
+      <ul id="ingredientes"></ul>
+      <h3>Preparación:</h3>
+      <ol id="pasos"></ol>
+    </div>
+  </div>
+
+  <script>
+    // ------------------------------
+    // RECETAS DE POSTRES
+    // ------------------------------
+    const recetas = {
+      "pastel-chocolate": {
+        titulo: "Pastel de Chocolate 🍫",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "2 tazas de harina",
+          "1 taza de cacao en polvo",
+          "1½ tazas de azúcar",
+          "3 huevos",
+          "1 taza de leche",
+          "½ taza de mantequilla derretida"
+        ],
+        pasos: [
+          "Precalienta el horno a 180°C.",
+          "Mezcla los ingredientes secos en un recipiente.",
+          "Agrega los huevos, la leche y la mantequilla.",
+          "Bate hasta obtener una mezcla homogénea.",
+          "Hornea durante 35-40 minutos."
+        ]
+      },
+      "cupcake-fresa": {
+        titulo: "Cupcake de Fresa 🍓",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "1 taza de harina",
+          "½ taza de azúcar",
+          "1 huevo",
+          "½ taza de puré de fresa",
+          "¼ taza de mantequilla"
+        ],
+        pasos: [
+          "Precalienta el horno a 180°C.",
+          "Mezcla la mantequilla con el azúcar.",
+          "Añade el huevo y el puré de fresa.",
+          "Incorpora la harina poco a poco.",
+          "Hornea durante 20 minutos."
+        ]
+      },
+      "tarta-frutas": {
+        titulo: "Tarta de Frutas 🍍",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "1 base de tarta",
+          "Crema pastelera",
+          "Frutas frescas variadas",
+          "Gelatina transparente"
+        ],
+        pasos: [
+          "Coloca la base de tarta en el molde.",
+          "Rellena con crema pastelera.",
+          "Decora con las frutas cortadas.",
+          "Cubre con gelatina transparente.",
+          "Refrigera antes de servir."
+        ]
+      },
+      "mousse-frambuesa": {
+        titulo: "Mousse de Frambuesa 💕",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "200g de frambuesas",
+          "200ml de crema para batir",
+          "3 cucharadas de azúcar",
+          "1 sobre de gelatina sin sabor"
+        ],
+        pasos: [
+          "Disuelve la gelatina según las instrucciones.",
+          "Bate la crema con el azúcar hasta montar.",
+          "Agrega las frambuesas trituradas.",
+          "Incorpora la gelatina y mezcla bien.",
+          "Refrigera 2 horas antes de servir."
+        ]
+      },
+      "cheesecake-vainilla": {
+        titulo: "Cheesecake de Vainilla 🍮",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "200g de galletas trituradas",
+          "100g de mantequilla",
+          "400g de queso crema",
+          "1 taza de azúcar",
+          "2 huevos",
+          "1 cucharada de esencia de vainilla"
+        ],
+        pasos: [
+          "Forma la base con galleta y mantequilla.",
+          "Bate el queso crema con azúcar y huevos.",
+          "Agrega la vainilla y mezcla.",
+          "Hornea 45 minutos a 170°C.",
+          "Enfría y refrigera antes de servir."
+        ]
+      },
+      "brownies": {
+        titulo: "Brownies 🍫",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "1 taza de mantequilla derretida",
+          "1 taza de azúcar",
+          "½ taza de cacao en polvo",
+          "2 huevos",
+          "1 taza de harina"
+        ],
+        pasos: [
+          "Precalienta el horno a 180°C.",
+          "Mezcla la mantequilla con el azúcar y el cacao.",
+          "Agrega los huevos y la harina.",
+          "Hornea por 25 minutos.",
+          "Deja enfriar antes de cortar."
+        ]
+      },
+      "galletas-chispas": {
+        titulo: "Galletas con Chispas 🍪",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "2 tazas de harina",
+          "1 taza de mantequilla",
+          "1 taza de azúcar morena",
+          "2 huevos",
+          "1 taza de chispas de chocolate"
+        ],
+        pasos: [
+          "Bate la mantequilla con el azúcar.",
+          "Agrega los huevos y mezcla.",
+          "Incorpora la harina y las chispas.",
+          "Forma bolitas y colócalas en la bandeja.",
+          "Hornea a 180°C durante 15 minutos."
+        ]
+      },
+      "flan-napolitano": {
+        titulo: "Flan Napolitano 🍮",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "1 lata de leche condensada",
+          "1 lata de leche evaporada",
+          "4 huevos",
+          "1 cucharadita de vainilla",
+          "½ taza de azúcar para el caramelo"
+        ],
+        pasos: [
+          "Prepara el caramelo y colócalo en un molde.",
+          "Licúa los demás ingredientes.",
+          "Vierte la mezcla sobre el caramelo.",
+          "Hornea a baño maría 50 minutos.",
+          "Deja enfriar y desmolda."
+        ]
+      },
+      "donas-glaseadas": {
+        titulo: "Donas Glaseadas 🍩",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "2 tazas de harina",
+          "½ taza de azúcar",
+          "2 huevos",
+          "1 cucharadita de levadura",
+          "Aceite para freír",
+          "Glaseado al gusto"
+        ],
+        pasos: [
+          "Mezcla los ingredientes secos.",
+          "Agrega los huevos y amasa.",
+          "Deja reposar la masa 30 minutos.",
+          "Forma las donas y fríe en aceite.",
+          "Decora con glaseado."
+        ]
+      },
+      "helado-mango": {
+        titulo: "Helado de Mango 🥭",
+        imagen: "imgPD/imagen.jpg",
+        ingredientes: [
+          "2 mangos maduros",
+          "1 taza de crema para batir",
+          "½ taza de leche condensada"
+        ],
+        pasos: [
+          "Licúa los mangos con la leche condensada.",
+          "Bate la crema y agrega la mezcla.",
+          "Coloca en un molde y congela 4 horas."
+        ]
+      }
+    };
+
+    // ------------------------------
+    // LÓGICA DEL MODAL
+    // ------------------------------
+    const modal = document.getElementById("modal");
+    const cerrar = document.getElementById("cerrar");
+    const titulo = document.getElementById("titulo-receta");
+    const imagen = document.getElementById("imagen-receta");
+    const ingredientesLista = document.getElementById("ingredientes");
+    const pasosLista = document.getElementById("pasos");
+
+    document.querySelectorAll(".ver-receta").forEach(boton => {
+      boton.addEventListener("click", () => {
+        const id = boton.dataset.receta;
+        const receta = recetas[id];
+        if (receta) {
+          titulo.textContent = receta.titulo;
+          imagen.src = receta.imagen;
+          ingredientesLista.innerHTML = receta.ingredientes.map(i => `<li>${i}</li>`).join("");
+          pasosLista.innerHTML = receta.pasos.map(p => `<li>${p}</li>`).join("");
+          modal.style.display = "flex";
+        }
+      });
+    });
+
+    cerrar.addEventListener("click", () => modal.style.display = "none");
+
+    window.addEventListener("click", e => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+  </script>
+</body>
+</html>
