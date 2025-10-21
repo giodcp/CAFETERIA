@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetario de Postres Dulces</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      background-color: #f3e6ff; /* morado bajito */
+      text-align: center;
+      margin: 0;
+    }
+
+    header {
+      color: black;
+      padding: 30px 10px;
+      text-align: center;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .postre {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+
+    .postre:hover {
+      transform: scale(1.03);
+    }
+
+    .postre img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .ver-receta {
+      background-color: #ff6b81;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .ver-receta:hover {
+      background-color: #ff8787;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      overflow: auto;
+      padding: 20px;
+    }
+
+    .modal-contenido {
+      background-color: white;
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 700px;
+      width: 100%;
+      text-align: left;
+      position: relative;
+    }
+
+    #cerrar {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 28px;
+      color: #ff6b81;
+      cursor: pointer;
+    }
+
+    #cerrar:hover {
+      color: #ff0000;
+    }
+
+    #imagen-receta {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .modal-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .texto-receta {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animar {
+      animation: aparecer 0.4s ease;
+    }
+
+    h3 {
+      color: #ff6b81;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍨 Postres Dulces</h1>
+    <p>Descubre las recetas más deliciosas para endulzar tu día 💕</p>
+  </header>
+
+  <main class="galeria">
+    <!-- Todos los postres -->
+    <article class="postre">
+      <img src="imgPD/pastel_chocolate.jpg" alt="Pastel de Chocolate">
+      <h2>Pastel de Chocolate</h2>
+      <button class="ver-receta" data-receta="pastel-chocolate">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/cupcakes.jpg" alt="Cupcake de Fresa">
+      <h2>Cupcake de Fresa</h2>
+      <button class="ver-receta" data-receta="cupcake-fresa">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/tarta_fresa.jpg" alt="Tarta de Fresas">
+      <h2>Tarta de Fresas</h2>
+      <button class="ver-receta" data-receta="tarta-frutas">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/Mouse de fresa.jpg" alt="Mousse de Fresa">
+      <h2>Mousse de Fresa</h2>
+      <button class="ver-receta" data-receta="mousse-fresa">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/cheesecake.jpg" alt="Cheesecake de Vainilla">
+      <h2>Cheesecake de Vainilla</h2>
+      <button class="ver-receta" data-receta="cheesecake-vainilla">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/brownies.jpg" alt="Brownies">
+      <h2>Brownies</h2>
+      <button class="ver-receta" data-receta="brownies">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/galletas.jpg" alt="Galletas con Chispas">
+      <h2>Galletas con Chispas</h2>
+      <button class="ver-receta" data-receta="galletas-chispas">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/flan napolitano.jpg" alt="Flan Napolitano">
+      <h2>Flan Napolitano</h2>
+      <button class="ver-receta" data-receta="flan-napolitano">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/helado de mango.jpg" alt="Helado de Mango">
+      <h2>Helado de Mango</h2>
+      <button class="ver-receta" data-receta="helado-mango">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/alfajor.png" alt="Alfajores">
+      <h2>Alfajores</h2>
+      <button class="ver-receta" data-receta="alfajor">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/cake pops.png" alt="Cake Pops">
+      <h2>Cake Pops</h2>
+      <button class="ver-receta" data-receta="cake-pops">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/caramelos.png" alt="Caramelos">
+      <h2>Caramelos</h2>
+      <button class="ver-receta" data-receta="caramelos">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/chocolate.png" alt="Bombones de Chocolate">
+      <h2>Bombones de Chocolate</h2>
+      <button class="ver-receta" data-receta="chocolate">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/gomitas.png" alt="Gomitas Caseras">
+      <h2>Gomitas Caseras</h2>
+      <button class="ver-receta" data-receta="gomitas">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/macarons.png" alt="Macarons">
+      <h2>Macarons</h2>
+      <button class="ver-receta" data-receta="macarons">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/panques.jpg" alt="Panqués">
+      <h2>Panqués</h2>
+      <button class="ver-receta" data-receta="panques">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/pie_manzana.jpg" alt="Pay de Manzana">
+      <h2>Pay de Manzana</h2>
+      <button class="ver-receta" data-receta="pay-manzana">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/roles_canela.jpg" alt="Roles de Canela">
+      <h2>Roles de Canela</h2>
+      <button class="ver-receta" data-receta="roles-canela">Ver receta</button>
+    </article>
+
+    <article class="postre">
+      <img src="imgPD/toast.jpg" alt="Tostadas Dulces">
+      <h2>Tostadas Dulces</h2>
+      <button class="ver-receta" data-receta="toast">Ver receta</button>
+    </article>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-contenido animar">
+      <span id="cerrar">&times;</span>
+      <div class="modal-grid">
+        <img id="imagen-receta" src="" alt="Imagen del postre">
+        <div class="texto-receta">
+          <h2 id="titulo-receta"></h2>
+          <h3>Ingredientes:</h3>
+          <ul id="ingredientes"></ul>
+          <h3>Preparación:</h3>
+          <ol id="pasos"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const recetas = {
+      "pastel-chocolate": { titulo: "Pastel de Chocolate 🍫", imagen: "imgPD/pastel_chocolate.jpg",
+        ingredientes: ["2 tazas de harina","1 taza de cacao en polvo","1½ tazas de azúcar","3 huevos","1 taza de leche","½ taza de mantequilla derretida"],
+        pasos: ["Precalienta el horno a 180°C.","Mezcla los ingredientes secos.","Agrega los huevos, la leche y la mantequilla.","Bate hasta obtener mezcla homogénea.","Hornea 35-40 minutos."]
+      },
+      "cupcake-fresa": { titulo: "Cupcake de Fresa 🍓", imagen: "imgPD/cupcakes.jpg",
+        ingredientes: ["1 taza de harina","½ taza de azúcar","1 huevo","½ taza de puré de fresa","¼ taza de mantequilla"],
+        pasos: ["Precalienta el horno a 180°C.","Mezcla mantequilla con azúcar.","Añade huevo y puré de fresa.","Incorpora harina poco a poco.","Hornea 20 minutos."]
+      },
+      "tarta-frutas": { titulo: "Tarta de Fresas 🍓🍰", imagen: "imgPD/tarta_fresa.jpg",
+        ingredientes: ["1 base de tarta","Crema pastelera","Fresas frescas","Gelatina transparente"],
+        pasos: ["Coloca la base de tarta en molde.","Rellena con crema pastelera.","Decora con fresas cortadas.","Cubre con gelatina.","Refrigera antes de servir."]
+      },
+      "mousse-fresa": { titulo: "Mousse de Fresa 💕", imagen: "imgPD/Mouse de fresa.jpg",
+        ingredientes: ["200g de fresas","200ml de crema para batir","3 cucharadas de azúcar","1 sobre de gelatina sin sabor"],
+        pasos: ["Disuelve gelatina según instrucciones.","Bate crema con azúcar hasta montar.","Agrega fresas trituradas.","Incorpora gelatina y mezcla.","Refrigera 2 horas."]
+      },
+      "cheesecake-vainilla": { titulo: "Cheesecake de Vainilla 🍮", imagen: "imgPD/cheesecake.jpg",
+        ingredientes: ["200g de galletas trituradas","100g de mantequilla","400g de queso crema","1 taza de azúcar","2 huevos","1 cucharada de esencia de vainilla"],
+        pasos: ["Forma la base con galleta y mantequilla.","Bate queso crema con azúcar y huevos.","Agrega vainilla y mezcla.","Hornea 45 minutos a 170°C.","Enfría y refrigera antes de servir."]
+      },
+      "brownies": { titulo: "Brownies 🍫", imagen: "imgPD/brownies.jpg",
+        ingredientes: ["1 taza de mantequilla derretida","1 taza de azúcar","½ taza de cacao en polvo","2 huevos","1 taza de harina"],
+        pasos: ["Precalienta horno 180°C.","Mezcla mantequilla con azúcar y cacao.","Agrega huevos y harina.","Hornea 25 minutos.","Deja enfriar antes de cortar."]
+      },
+      "galletas-chispas": { titulo: "Galletas con Chispas 🍪", imagen: "imgPD/galletas.jpg",
+        ingredientes: ["2 tazas de harina","1 taza de mantequilla","1 taza de azúcar morena","2 huevos","1 taza de chispas de chocolate"],
+        pasos: ["Bate mantequilla con azúcar.","Agrega huevos y mezcla.","Incorpora harina y chispas.","Forma bolitas y coloca en bandeja.","Hornea 15 minutos a 180°C."]
+      },
+      "flan-napolitano": { titulo: "Flan Napolitano 🍮", imagen: "imgPD/flan napolitano.jpg",
+        ingredientes: ["1 lata de leche condensada","1 lata de leche evaporada","4 huevos","1 cucharadita de vainilla","½ taza de azúcar para caramelo"],
+        pasos: ["Prepara caramelo y colócalo en molde.","Licúa los demás ingredientes.","Vierte mezcla sobre caramelo.","Hornea a baño maría 50 minutos.","Enfría y desmolda."]
+      },
+      "helado-mango": { titulo: "Helado de Mango 🥭", imagen: "imgPD/helado de mango.jpg",
+        ingredientes: ["2 mangos maduros","1 taza de crema para batir","½ taza de leche condensada"],
+        pasos: ["Licúa mangos con leche condensada.","Bate crema y agrega mezcla.","Coloca en molde y congela 4 horas."]
+      },
+      "alfajor": { titulo: "Alfajores 🍪", imagen: "imgPD/alfajor.png",
+        ingredientes: ["2 tazas de harina","1 taza de maicena","½ taza de azúcar glas","150g de mantequilla","Dulce de leche y coco rallado"],
+        pasos: ["Mezcla ingredientes secos con mantequilla.","Forma masa y corta círculos.","Hornea 10 minutos a 170°C.","Rellena con dulce de leche y cubre con coco."]
+      },
+      "cake-pops": { titulo: "Cake Pops 🎂", imagen: "imgPD/cake pops.png",
+        ingredientes: ["Bizcocho desmenuzado","Queso crema o betún","Chocolate derretido","Palitos de cake pop"],
+        pasos: ["Mezcla bizcocho con betún.","Forma bolitas y coloca palitos.","Cubre con chocolate y deja secar."]
+      },
+      "caramelos": { titulo: "Caramelos 🍬", imagen: "imgPD/caramelos.png",
+        ingredientes: ["1 taza de azúcar","½ taza de crema","¼ taza de mantequilla","1 cucharada de vainilla"],
+        pasos: ["Derrite azúcar a fuego medio.","Agrega mantequilla y crema lentamente.","Cocina hasta espesar y vierte en moldes."]
+      },
+      "chocolate": { titulo: "Bombones de Chocolate 🍫", imagen: "imgPD/chocolate.png",
+        ingredientes: ["Chocolate para derretir","Relleno al gusto (nuez, caramelo, etc.)"],
+        pasos: ["Derrite chocolate y rellena moldes.","Agrega relleno y cubre con más chocolate.","Refrigera hasta endurecer."]
+      },
+      "gomitas": { titulo: "Gomitas Caseras 🍬", imagen: "imgPD/gomitas.png",
+        ingredientes: ["2 sobres de gelatina de sabor","1 sobre de grenetina sin sabor","1 taza de agua caliente"],
+        pasos: ["Mezcla todos los ingredientes.","Vierte en moldes pequeños.","Refrigera hasta que cuajen."]
+      },
+      "macarons": { titulo: "Macarons 💖", imagen: "imgPD/macarons.png",
+        ingredientes: ["1 taza de azúcar glas","½ taza de almendra molida","2 claras de huevo","Colorante y relleno al gusto"],
+        pasos: ["Bate claras a punto de nieve.","Agrega azúcar glas y almendra.","Forma círculos y hornea 15 minutos a 150°C.","Rellena al gusto."]
+      },
+      "panques": { titulo: "Panqués 🍞", imagen: "imgPD/panques.jpg",
+        ingredientes: ["2 tazas de harina","1 taza de azúcar","3 huevos","1 taza de mantequilla derretida","1 taza de leche"],
+        pasos: ["Mezcla ingredientes secos y húmedos.","Vierte en molde engrasado.","Hornea 40 minutos a 180°C."]
+      },
+      "pay-manzana": { titulo: "Pay de Manzana 🍎", imagen: "imgPD/pie_manzana.jpg",
+        ingredientes: ["Masa para pay","4 manzanas rebanadas","½ taza de azúcar","Canela al gusto"],
+        pasos: ["Coloca manzanas sobre la base del pay.","Espolvorea con azúcar y canela.","Cubre con masa y hornea 45 minutos."]
+      },
+      "roles-canela": { titulo: "Roles de Canela 🍥", imagen: "imgPD/roles_canela.jpg",
+        ingredientes: ["2 tazas de harina","1 taza de leche tibia","2 cucharadas de mantequilla","Canela y azúcar para el relleno"],
+        pasos: ["Prepara masa suave con ingredientes.","Extiende y agrega relleno.","Enrolla y corta en piezas.","Hornea 25 minutos a 180°C."]
+      },
+      "toast": { titulo: "Tostadas Dulces 🍞", imagen: "imgPD/toast.jpg",
+        ingredientes: ["Pan de caja","Miel o jarabe de maple","Frutas y crema batida"],
+        pasos: ["Tuesta el pan.","Cubre con miel y frutas.","Agrega crema batida y sirve."]
+      }
+    };
+
+    // Modal
+    const modal = document.getElementById("modal");
+    const cerrar = document.getElementById("cerrar");
+    const tituloReceta = document.getElementById("titulo-receta");
+    const imagenReceta = document.getElementById("imagen-receta");
+    const listaIngredientes = document.getElementById("ingredientes");
+    const listaPasos = document.getElementById("pasos");
+
+    function mostrarReceta(id) {
+      const receta = recetas[id];
+      if (!receta) return;
+      tituloReceta.textContent = receta.titulo;
+      imagenReceta.src = receta.imagen;
+      listaIngredientes.innerHTML = receta.ingredientes.map(i => `<li>${i}</li>`).join("");
+      listaPasos.innerHTML = receta.pasos.map(p => `<li>${p}</li>`).join("");
+      modal.style.display = "flex";
+    }
+
+    function cerrarModal() {
+      modal.style.display = "none";
+    }
+
+    document.querySelectorAll(".ver-receta").forEach(boton => {
+      boton.addEventListener("click", () => mostrarReceta(boton.dataset.receta));
+    });
+
+    cerrar.addEventListener("click", cerrarModal);
+    window.addEventListener("click", e => { if (e.target === modal) cerrarModal(); });
+  </script>
+</body>
+</html>
