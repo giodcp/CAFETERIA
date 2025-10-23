@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAS GIRLS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: monospace; color: #333; line-height: 1.4; background: #fff; display: flex; flex-direction: column; min-height: 100vh; }
+
+    .card { transition: transform 0.3s ease; }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 15px #ff99cc; }
+
+    /* Modal Halloween con naranja pastel */
+    .halloween-modal .modal-content {
+        background: #ffe6cc;
+        border-radius: 15px;
+        border: 2px solid #ffb366;
+        color: #663366;
+    }
+    .halloween-modal .card { 
+        background-color: #fff0f6; 
+        border: 1px solid #ffb3d9; 
+        border-radius: 10px; 
+        color: #663366; 
+    }
+    .halloween-modal .card-title { 
+        color: #ff66b3; 
+        font-weight: bold; 
+    }
+    .halloween-header { 
+        background-color: #ffc266; 
+        color: #663366; 
+        font-weight: bold; 
+        text-align: center; 
+        padding: 15px; 
+        border-radius: 10px 10px 0 0; 
+        font-size: 1.5em; 
+    }
+    .halloween-modal .btn-close { filter: invert(1); }
+
+    footer { background-color: #ffe6f0; text-align: center; color: #993366; padding: 15px; margin-top: auto; }
+
+
+
+    /*ENCABEZADO*/
+    .encabezado {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      background-color: #ff9933;
+    }
+    
+    /* Estilos del navbar */
+    .navbar {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Logo */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    /* Enlaces del menú */
+    .nav-link-custom {
+      color: white !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link-custom:hover {
+      background-color: rgba(255, 85, 7, 0.219);
+      border-radius: 0.25rem;
+      transform: translateY(-2px);
+    }
+    
+    .nav-link-custom:active,
+    .nav-link-custom.active {
+      background-color: rgb(199, 56, 4);
+    }
+    
+    /* Botón hamburguesa */
+    .navbar-toggler {
+      border: 2px solid #ff9933;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.25rem rgb(255, 85, 0);
+      outline: none;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(128, 0, 128, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      width: 1.5em;
+      height: 1.5em;
+    }
+    
+    /* Estilos responsivos para tablets y móviles */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        margin-top: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      
+      .nav-link-custom {
+        font-size: 15px;
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid rgba(128, 0, 128, 0.1);
+        display: block;
+        text-align: left;
+      }
+      
+      .nav-item:last-child .nav-link-custom {
+        border-bottom: none;
+      }
+      
+    }
+    
+    /* Estilos para móviles pequeños */
+    @media (max-width: 576px) {
+      .navbar {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .nav-link-custom {
+        font-size: 14px;
+        padding: 0.6rem 1rem;
+      }
+    }
+ 
+ /* Footer */
+    footer {
+      background: #ff9933;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer .info {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom encabezado">
+    <div class="container">
+      <a class="navbar-brand" href=""><div class="logo"> Especial Halloween 🎃 Las Girls</div></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="pagPrincipal.html" class="nav-link nav-link-custom">INICIO</a></li>
+          <li class="nav-item"><a href="" class="nav-link nav-link-custom">NOSOTROS</a></li>
+          <li class="nav-item"><a href="" class="nav-link nav-link-custom">CONTACTO</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+ <!-- MODAL HALLOWEEN -->
+      <div class="modal-body" style="background-color:#fff3e6; padding-bottom: 15px; padding-left: 10px; padding-right: 10px;">
+        <div class="d-flex flex-wrap justify-content-center gap-4 mt-3">
+          <!-- Productos Halloween -->
+          <div class="card text-center p-3" style="width: 16rem;">
+            <img src="../../imgsCafeteria/img_porTemporada/panHalloween.jpg" class="card-img-top" alt="Pan Halloween">
+            <div class="card-body">
+              <h5 class="card-title">Pan de Calabaza Pastel</h5>
+              <p class="card-text">Pan suave con puré de calabaza y glaseado rosa pastel.</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recetaPan">Ver receta 🎃</button>
+            </div>
+          </div>
+          <div class="card text-center p-3" style="width: 16rem;">
+            <img src="../../imgsCafeteria/img_porTemporada/bebidaHalloween.jpg" class="card-img-top" alt="Latte Halloween">
+            <div class="card-body">
+              <h5 class="card-title">Latte de Calabaza Pastel</h5>
+              <p class="card-text">Café con leche y puré de calabaza, decorado con espuma y glaseado rosa.</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recetaLatte">Ver receta 🎃</button>
+            </div>
+          </div>
+          <div class="card text-center p-3" style="width: 16rem;">
+            <img src="../../imgsCafeteria/img_porTemporada/galletasHalloween.jpg" class="card-img-top" alt="Galletas Halloween">
+            <div class="card-body">
+              <h5 class="card-title">Galletas Fantasma</h5>
+              <p class="card-text">Dulces de mantequilla en forma de fantasmas, con glaseado blanco y ojos de chocolate.</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recetaGalletas">Ver receta 🎃</button>
+            </div>
+          </div>
+          <div class="card text-center p-3" style="width: 16rem;">
+            <img src="../../imgsCafeteria/img_porTemporada/cupcakeHalloween.jpg" class="card-img-top" alt="Cupcake Halloween">
+            <div class="card-body">
+              <h5 class="card-title">Cupcake Calabaza</h5>
+              <p class="card-text">Mini cupcakes de calabaza decorados con crema rosa y toppers divertidos.</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recetaCupcake">Ver receta 🎃</button>
+            </div>
+          </div>
+          <div class="card text-center p-3" style="width: 16rem;">
+            <img src="../../imgsCafeteria/img_porTemporada/chocolateHalloween.jpg" class="card-img-top" alt="Chocolate Halloween">
+            <div class="card-body">
+              <h5 class="card-title">Chocolate Calabaza</h5>
+              <p class="card-text">Chocolate caliente con crema batida y mini malvaviscos fantasmas.</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recetaChocolate">Ver receta 🎃</button>
+            </div>
+          </div>
+          <div class="card text-center p-3" style="width: 16rem;">
+            <img src="../../imgsCafeteria/img_porTemporada/smoothieHalloween.jpg" class="card-img-top" alt="Smoothie Halloween">
+            <div class="card-body">
+              <h5 class="card-title">Smoothie Calabaza & Fresa</h5>
+              <p class="card-text">Bebida fría de calabaza y fresas, decorada con crema pastel y chispitas.</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#recetaSmoothie">Ver receta 🎃</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+ 
+
+<!-- ===================== MODALES DE RECETAS ===================== -->
+
+<!-- Receta 1: Pan de Calabaza -->
+<div class="modal fade" id="recetaPan" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffcc99; color:#663366;">
+        <h5 class="modal-title">Receta Pan de Calabaza Pastel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ingredientes:</strong> 2 tazas de puré de calabaza, 1 1/2 tazas de harina, 1 taza de azúcar, 2 huevos, 1/2 taza de mantequilla, 1 cucharadita de canela.</p>
+        <p><strong>Preparación:</strong> Mezclar los ingredientes húmedos y secos por separado, unir y hornear a 180°C por 35-40 minutos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Receta 2: Latte de Calabaza -->
+<div class="modal fade" id="recetaLatte" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffcc99; color:#663366;">
+        <h5 class="modal-title">Receta Latte de Calabaza Pastel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ingredientes:</strong> 1 taza de leche, 1/2 taza de café espresso, 1/4 taza de puré de calabaza, 1 cucharada de azúcar, canela al gusto.</p>
+        <p><strong>Preparación:</strong> Calentar la leche con puré de calabaza y azúcar, batir hasta espuma, añadir el café y espolvorear canela.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Receta 3: Galletas Fantasma -->
+<div class="modal fade" id="recetaGalletas" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffcc99; color:#663366;">
+        <h5 class="modal-title">Receta Galletas Fantasma</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ingredientes:</strong> 2 tazas de harina, 1 taza de mantequilla, 1/2 taza de azúcar, 1 huevo, glaseado blanco, chispas de chocolate.</p>
+        <p><strong>Preparación:</strong> Mezclar mantequilla y azúcar, añadir huevo y harina. Cortar en formas de fantasmas, hornear 12-15 min, decorar con glaseado y chocolate.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Receta 4: Cupcake Calabaza -->
+<div class="modal fade" id="recetaCupcake" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffcc99; color:#663366;">
+        <h5 class="modal-title">Receta Cupcake Calabaza</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ingredientes:</strong> 1 taza de puré de calabaza, 1 taza de harina, 1/2 taza de azúcar, 1 huevo, 1/4 taza de aceite, 1 cucharadita de polvo de hornear.</p>
+        <p><strong>Preparación:</strong> Mezclar ingredientes, llenar moldes de cupcake 2/3, hornear a 180°C por 20 min. Decorar con crema y toppers.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Receta 5: Chocolate Calabaza -->
+<div class="modal fade" id="recetaChocolate" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffcc99; color:#663366;">
+        <h5 class="modal-title">Receta Chocolate Calabaza</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ingredientes:</strong> 2 tazas de leche, 1/2 taza de puré de calabaza, 100 g de chocolate, crema batida, malvaviscos.</p>
+        <p><strong>Preparación:</strong> Calentar leche y puré de calabaza, añadir chocolate hasta derretir. Servir con crema batida y malvaviscos.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Receta 6: Smoothie Calabaza & Fresa -->
+<div class="modal fade" id="recetaSmoothie" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffcc99; color:#663366;">
+        <h5 class="modal-title">Receta Smoothie Calabaza & Fresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Ingredientes:</strong> 1 taza de puré de calabaza, 1 taza de fresas, 1/2 taza de yogur, 1 cucharada de miel.</p>
+        <p><strong>Preparación:</strong> Licuar todos los ingredientes hasta obtener mezcla homogénea. Servir frío.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PIE DE PÁGINA -->
+  <footer id="contacto">
+    <div class="container info">
+      <p>&copy; 2025 Postres Las Girls | Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

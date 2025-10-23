@@ -6,7 +6,7 @@
         <title>Bebidas Calientes</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="styles_nav_footer.css">
+       
   <style>
     * {
         box-sizing: border-box;
@@ -20,33 +20,151 @@
     line-height: 1.4;
     background: #fff;
     }
+
+
+    /*ENCABEZADO*/
+    .encabezado {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      background-color: #FFC067;
+    }
+    FFC067
+    /* Estilos del navbar */
+    .navbar {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.4;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Logo */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #665D52;
+    }
+    
+    /* Enlaces del menú */
+    .nav-link-custom {
+      color: #665D52 !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link-custom:hover {
+      background-color: #f3940f;
+      border-radius: 0.25rem;
+      transform: translateY(-2px);
+    }
+    
+    .nav-link-custom:active,
+    .nav-link-custom.active {
+      background-color: rgba(128, 0, 128, 0.2);
+    }
+    
+    /* Botón hamburguesa */
+    .navbar-toggler {
+      border: 2px solid #665D52;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.25rem rgba(128, 0, 128, 0.25);
+      outline: none;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(128, 0, 128, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      width: 1.5em;
+      height: 1.5em;
+    }
+    
+    /* Estilos responsivos para tablets y móviles */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        margin-top: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      
+      .nav-link-custom {
+        font-size: 15px;
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid rgba(128, 0, 128, 0.1);
+        display: block;
+        text-align: left;
+      }
+      
+      .nav-item:last-child .nav-link-custom {
+        border-bottom: none;
+      }
+      
+    }
+    
+    /* Estilos para móviles pequeños */
+    @media (max-width: 576px) {
+      .navbar {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .nav-link-custom {
+        font-size: 14px;
+        padding: 0.6rem 1rem;
+      }
+    }
+ 
+ /* Footer */
+    footer {
+      background: #FFC067;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer .info {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
   </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom encabezado" >
-    <div class="container">
-      <a class="navbar-brand"  href="">
-        <div class="logo">🍰 Postres Las Girls</div>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="" class="nav-link nav-link-custom" aria-current="page">INICIO</a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link nav-link-custom">NOSOTROS</a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link nav-link-custom">CONTACTO</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-        <main>
+      <main>
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom encabezado">
+        <div class="container">
+          <a class="navbar-brand" href="pagPrincipal.html">
+            <div class="logo"> Bebidas Calientes ☕ Las Girls</div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a href="pagPrincipal.html" class="nav-link nav-link-custom">INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a href="pagSecciones.html" class="nav-link nav-link-custom">MENÚ</a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="#contacto" class="nav-link nav-link-custom">CONTACTO</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
 
     <section class="py-5 text-center container" style="background-color: #f9e4b7;">
       <div class="row py-lg-5">
@@ -63,7 +181,7 @@
   <div class="d-flex flex-wrap justify-content-center gap-5">
     
     <div class="card  shadow text-center mb-4 p-3" style="width: 18rem; align-items: center; background-color: #FFC067;">
-      <img src="imgsCafeteria/img_bebidasCalientes/cafe caliente (1).jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
+      <img src="../../imgsCafeteria/img_bebidasCalientes/cafe caliente (1).jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
       <h2 class="fw-normal mt-3">Cafe</h2>
       <p class="card-text">Una taza de café humeante, con aroma profundo y notas tostadas que despiertan los sentidos.
                                      Perfecto para comenzar el día o acompañar una buena charla.</p>
@@ -71,7 +189,7 @@
     </div>
 
     <div class="card  shadow text-center mb-4 p-3" style="width: 18rem; align-items: center; background-color: #FFC067;">
-      <img src="imgsCafeteria/img_bebidasCalientes/Chocolate caliente.jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
+      <img src="../../imgsCafeteria/img_bebidasCalientes/Chocolate caliente.jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
       <h2 class="fw-normal mt-3">Chocolate</h2>
       <p class="card-text">Espeso, cremoso y dulce, con el abrazo cálido del cacao. Ideal para tardes frías 
                             o momentos que necesitan un toque de ternura.</p>
@@ -79,7 +197,7 @@
     </div>
 
     <div class="card  shadow text-center mb-4 p-3" style="width: 18rem; align-items: center; background-color: #FFC067;">
-      <img src="imgsCafeteria/img_bebidasCalientes/Atole caliente.jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
+      <img src="../../imgsCafeteria/img_bebidasCalientes/Atole caliente.jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
       <h2 class="fw-normal mt-3">Atole</h2>
       <p class="card-text">radicional y nutritivo, el atole combina maíz, canela y leche en una bebida espesa y reconfortante.
                         Un clásico mexicano que alimenta cuerpo y alma.</p>
@@ -87,7 +205,7 @@
     </div>
 
     <div class="card  shadow text-center mb-4 p-3" style="width: 18rem; align-items: center; background-color: #FFC067;">
-      <img src="imgsCafeteria/img_bebidasCalientes/Te caliente.jpg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
+      <img src="../../imgsCafeteria/img_bebidasCalientes/Te caliente.jpg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
       <h2 class="fw-normal mt-3">Te</h2>
       <p class="card-text">Ligero y reconfortante, el té ofrece una infusión delicada que puede ser herbal, frutal o especiada.
                         Cada sorbo es una pausa serena.</p>
@@ -95,7 +213,7 @@
     </div>
 
     <div class="card  shadow text-center mb-4 p-3" style="width: 18rem; align-items: center; background-color: #FFC067;">
-      <img src="imgsCafeteria/img_bebidasCalientes/Ponche caliente.jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
+      <img src="../../imgsCafeteria/img_bebidasCalientes/Ponche caliente.jpeg" class="rounded-circle" width="200" height="200" alt="Descripción de la imagen">
       <h2 class="fw-normal mt-3">Ponche</h2>
       <p class="card-text">Colorido y festivo, el ponche mezcla frutas de temporada, especias y dulzura en una bebida caliente
                          que celebra la tradición y el calor del hogar.</p>
@@ -137,6 +255,13 @@
     </div>
   </div>
 </div>
+
+<!-- PIE DE PÁGINA -->
+  <footer id="contacto">
+    <div class="container info">
+      <p>&copy; 2025 Postres Las Girls | Todos los derechos reservados</p>
+    </div>
+  </footer>
   </main>
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" ></script>
     </body>
